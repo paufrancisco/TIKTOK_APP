@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hindi Ka Makapili? Hayaan Mo Ang Dice 🎲</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="DiceApp.css">
+</head>
+<body>
+<div class="phone">
+  <h2 class="sr-only">Random decision maker app na sasagot ng funny Tagalog answer gamit ang dice roll.</h2>
+  <div class="eyebrow">Day 1 · Random App</div>
+  <h1>Hindi Ka Makapili?<br>Hayaan Mo Ang Dice 🎲</h1>
+  <p class="sub">Itype ang tanong mo, i-roll, at tanggapin na lang ang sagot.</p>
+
+  <div class="question-wrap">
+    <label for="question">Tanong mo</label>
+    <input type="text" id="question" placeholder="Hal. Mag resign na ba ako?" maxlength="80">
+  </div>
+
+  <div class="die-stage">
+    <div class="die" id="die">🎲</div>
+  </div>
+
+  <button id="rollBtn">I-ROLL ANG DICE</button>
+
+  <div class="board" id="board">
+    <div id="boardInner">
+      <span class="placeholder-text">Dito lalabas ang desisyon mo...</span>
+    </div>
+  </div>
+  <button class="again" id="againBtn" style="display:none;">🔁 Roll ulit</button>
+</div>
+
+<script src="DiceApp.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+:root{
+  --ink:#14102B;
+  --ink-2:#1E1840;
+  --marigold:#FFC93C;
+  --jeepney:#FF4B5C;
+  --violet:#7B61FF;
+  --mint:#2EE6A6;
+  --paper:#FFF8EC;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
+body{
+  background:var(--ink);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(123,97,255,0.35), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(255,75,92,0.25), transparent 45%);
+  color:var(--paper);
+  font-family:'Plus Jakarta Sans', sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.phone{
+  width:100%;
+  max-width:420px;
+  min-height:720px;
+  background:var(--ink-2);
+  border-radius:36px;
+  border:3px solid rgba(255,255,255,0.08);
+  padding:32px 24px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.phone::before{
+  content:"";
+  position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg,var(--marigold),var(--jeepney),var(--violet),var(--mint));
+}
+.eyebrow{
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--marigold);
+  font-weight:700;
+  margin-top:12px;
+}
+h1{
+  font-family:'Baloo 2', cursive;
+  font-size:30px;
+  font-weight:800;
+  text-align:center;
+  line-height:1.15;
+  margin:10px 0 6px;
+}
+.sub{
+  font-size:14px;
+  color:rgba(255,248,236,0.65);
+  text-align:center;
+  margin-bottom:22px;
+}
+.question-wrap{
+  width:100%;
+  margin-bottom:18px;
+}
+.question-wrap label{
+  font-size:12px;
+  color:rgba(255,248,236,0.55);
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+#question{
+  width:100%;
+  padding:14px 16px;
+  border-radius:14px;
+  border:2px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.06);
+  color:var(--paper);
+  font-family:inherit;
+  font-size:15px;
+  outline:none;
+}
+#question::placeholder{color:rgba(255,248,236,0.4);}
+#question:focus{border-color:var(--marigold);}
+
+.die-stage{
+  width:150px; height:150px;
+  display:flex; align-items:center; justify-content:center;
+  margin:18px 0 8px;
+  perspective:600px;
+}
+.die{
+  width:110px; height:110px;
+  background:linear-gradient(160deg,var(--marigold),#FFB000);
+  border-radius:24px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:52px;
+  box-shadow:0 12px 0 rgba(0,0,0,0.25), 0 20px 30px rgba(255,201,60,0.25);
+  transition:transform .08s ease-out;
+}
+.die.rolling{
+  animation:tumble .6s linear infinite;
+}
+@keyframes tumble{
+  0%{transform:rotate(0deg) scale(1);}
+  25%{transform:rotate(90deg) scale(1.05);}
+  50%{transform:rotate(180deg) scale(0.95);}
+  75%{transform:rotate(270deg) scale(1.05);}
+  100%{transform:rotate(360deg) scale(1);}
+}
+
+#rollBtn{
+  font-family:'Baloo 2', cursive;
+  font-size:19px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--mint);
+  border:none;
+  padding:16px 36px;
+  border-radius:999px;
+  cursor:pointer;
+  box-shadow:0 8px 0 #1B9F72;
+  margin-top:10px;
+  transition:transform .05s ease-out, box-shadow .05s ease-out;
+  width:100%;
+}
+#rollBtn:active{
+  transform:translateY(6px);
+  box-shadow:0 2px 0 #1B9F72;
+}
+#rollBtn:disabled{opacity:0.6; cursor:default;}
+
+.board{
+  width:100%;
+  margin-top:26px;
+  min-height:150px;
+  background:var(--ink);
+  border-radius:18px;
+  border:2px solid rgba(255,255,255,0.08);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.board-label{
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--jeepney);
+  font-weight:700;
+  margin-bottom:10px;
+}
+.flip-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:3px;
+}
+.flip-tile{
+  background:var(--ink-2);
+  border-radius:6px;
+  padding:8px 4px;
+  min-width:16px;
+  font-family:'Baloo 2', cursive;
+  font-weight:700;
+  font-size:17px;
+  color:var(--paper);
+  opacity:0;
+  transform:translateY(-14px) rotateX(90deg);
+  animation:flipIn .35s forwards;
+}
+@keyframes flipIn{
+  to{opacity:1; transform:translateY(0) rotateX(0deg);}
+}
+.placeholder-text{
+  color:rgba(255,248,236,0.35);
+  font-size:14px;
+}
+.again{
+  margin-top:16px;
+  font-size:12px;
+  color:rgba(255,248,236,0.5);
+  text-decoration:underline;
+  cursor:pointer;
+  background:none;
+  border:none;
+  font-family:inherit;
+}
+.sr-only{
+  position:absolute; width:1px; height:1px;
+  overflow:hidden; clip:rect(0,0,0,0);
+}
